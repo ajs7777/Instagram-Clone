@@ -30,7 +30,7 @@ struct MainTabView: View {
                 .tabItem {
                     Image(systemName: "person")
                 }
-        } .tint(.black)
+        } .tint(Color.black)
     }
 }
 
