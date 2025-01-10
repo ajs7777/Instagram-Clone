@@ -14,13 +14,15 @@ struct MainTabView: View {
                 .tabItem {
                     Image(systemName: "house")
                 }
-            Text("Explore View")
+                .toolbarBackground(.white, for: .tabBar)
+            SearchView()
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                 }
             Text("Upload Post")
                 .tabItem {
                     Image(systemName: "plus.square")
+                        .environment(\.symbolVariants, .none)
                 }
             Text("inbox View")
                 .tabItem {
@@ -31,7 +33,7 @@ struct MainTabView: View {
                     Image(systemName: "person")
                 }
         } .tint(Color.black)
-        
+           
     }
 }
 

@@ -31,7 +31,7 @@ struct FeedView: View {
                         .frame(width: 110, height: 40)
                 }
             }
-        }
+        } 
     }
 }
 
