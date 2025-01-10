@@ -19,6 +19,7 @@ struct MainTabView: View {
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                 }
+                .toolbarBackground(.white, for: .tabBar)
             Text("Upload Post")
                 .tabItem {
                     Image(systemName: "plus.square")
