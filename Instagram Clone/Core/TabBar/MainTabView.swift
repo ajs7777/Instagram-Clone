@@ -29,10 +29,13 @@ struct MainTabView: View {
                 .tabItem {
                     Image(systemName: "heart")
                 }
-            ProfileView()
-                .tabItem {
-                    Image(systemName: "person")
-                }
+            NavigationStack {
+                ProfileView()
+            }
+                    .tabItem {
+                        Image(systemName: "person")
+                    }
+            
         } .tint(Color.black)
            
     }

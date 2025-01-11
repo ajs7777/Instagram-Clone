@@ -16,7 +16,7 @@ struct ProfileView: View {
     ]
     
     var body: some View {
-        NavigationStack {
+   //     NavigationStack {
             ScrollView {
                 HStack{
                     Image("black-panther-1")
@@ -86,11 +86,13 @@ struct ProfileView: View {
                        
                     }
                 }
-        }
+       // }
         
     }
 }
 
 #Preview {
-    ProfileView()
+    NavigationStack {
+        ProfileView()
+    }
 }
