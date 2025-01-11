@@ -14,11 +14,19 @@ struct CurrentUserProfileView: View {
         .init(.flexible(), spacing: 1)
     ]
     
+    let imageScale : CGFloat = (UIScreen.main.bounds.width / 3 ) - 1
+    
+    let user : User
+    
+    var posts : [Post] {
+        return Post.MOCK_POST.filter { $0.user?.username == user.username }
+    }
+    
     var body: some View {
         NavigationStack {
             ScrollView {
                 HStack{
-                    Image("black-panther-1")
+                    Image(user.profileImageUrl ?? "")
                         .resizable()
                         .scaledToFill()
                         .frame(width: 100, height: 100)
@@ -35,10 +43,10 @@ struct CurrentUserProfileView: View {
                     .padding(.bottom, 10)
                 
                 VStack(alignment: .leading, spacing: 4.0) {
-                    Text("Chadwick Boseman")
+                    Text(user.fullName ?? "")
                         .fontWeight(.bold)
                         .font(.subheadline)
-                    Text("Wakanda Forever")
+                    Text(user.bio ?? "")
                         .font(.footnote)
                 } .padding(.horizontal)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -63,11 +71,11 @@ struct CurrentUserProfileView: View {
                 Divider()
                 
                 LazyVGrid(columns: gridItems, spacing: 1) {
-                    ForEach(0..<3, id: \.self) { post in
-                        Image("black-panther-2")
+                    ForEach(posts) { post in
+                        Image(post.imageurl )
                             .resizable()
                             .scaledToFill()
-                            .frame(width: 132, height: 132)
+                            .frame(width: imageScale, height: imageScale)
                             .clipShape(Rectangle())
                     }
                 }
@@ -91,5 +99,5 @@ struct CurrentUserProfileView: View {
 }
 
 #Preview {
-    CurrentUserProfileView()
+    CurrentUserProfileView( user: User.MOCK_USER[4])
 }
