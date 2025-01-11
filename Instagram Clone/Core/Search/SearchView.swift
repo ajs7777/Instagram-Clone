@@ -41,7 +41,7 @@ struct SearchView: View {
                 }
             }
             .navigationDestination(for: User.self, destination: { user in
-                ProfileView()
+                ProfileView(user: user)
             })
             .navigationTitle("Explore")
             .navigationBarTitleDisplayMode(.inline)
