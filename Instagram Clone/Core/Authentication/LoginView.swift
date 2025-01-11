@@ -25,6 +25,7 @@ struct LoginView: View {
                         .textInputAutocapitalization(.never)
                         .modifier(IGButtonStyleModifier())
                     SecureField("Enter your password", text: $password)
+                        .textInputAutocapitalization(.never)
                         .modifier(IGButtonStyleModifier())
                 }
                 
