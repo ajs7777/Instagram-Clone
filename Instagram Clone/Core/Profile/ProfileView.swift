@@ -8,20 +8,8 @@
 import SwiftUI
 
 struct ProfileView: View {
-    
-    @State var gridItems: [GridItem] = [
-        .init(.flexible(), spacing: 1),
-        .init(.flexible(), spacing: 1),
-        .init(.flexible(), spacing: 1)
-    ]
-    
-    let imageScale : CGFloat = (UIScreen.main.bounds.width / 3 ) - 1
-    
+        
     let user : User
-    
-    var posts : [Post] {
-        return Post.MOCK_POST.filter { $0.user?.username == user.username }
-    }
     
     var body: some View {
         
@@ -75,15 +63,7 @@ struct ProfileView: View {
             
             Divider()
             
-            LazyVGrid(columns: gridItems, spacing: 1) {
-                ForEach(posts) { post in
-                    Image(post.imageurl)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: imageScale, height: imageScale)
-                        .clipShape(Rectangle())
-                }
-            }
+            PostGridView(user: user)
         }
         .navigationTitle("Profile")
         .navigationBarTitleDisplayMode(.inline)
