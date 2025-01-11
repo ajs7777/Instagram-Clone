@@ -1,5 +1,5 @@
 //
-//  PasswordView.swift
+//  CompleteSignUpView.swift
 //  Instagram Clone
 //
 //  Created by Abhijit Saha on 11/01/25.
@@ -7,30 +7,34 @@
 
 import SwiftUI
 
-struct PasswordView: View {
+struct CompleteSignUpView: View {
     
-    @State var password = ""
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack(spacing: 10.0) {
-            Text("Create a password")
-                .font(.title2)
-                .fontWeight(.bold)
-            Text("Your password must be at least 6 characters long")
+            Spacer()
+            VStack(spacing: 0) {
+                Text("Welcome to Instagram,")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                Text("Bruce Wayne")
+                    .font(.title2)
+                    .fontWeight(.bold)
+            }
+            Text("Click below to complte registration and start using Instagram")
                 .foregroundStyle(.gray)
-                .font(.footnote)
+                .font(.subheadline)
+                .multilineTextAlignment(.center)
             
             VStack(spacing: 25.0) {
-                SecureField("Create a password", text: $password)
-                    .textInputAutocapitalization(.never)
-                    .modifier(IGButtonStyleModifier())
                 
-                NavigationLink {
-                    CompleteSignUpView()
-                        .navigationBarBackButtonHidden(true)
+                Button {
+                   print("Sign In Done")
                 } label: {
-                    Text("Next")
+                    Text("Complete Sign Up")
+                        .font(.subheadline)
+                        .fontWeight(.medium)
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
                         .frame(height: 42)
@@ -58,6 +62,6 @@ struct PasswordView: View {
 
 #Preview {
     NavigationStack {
-        PasswordView()
+        CompleteSignUpView()
     }
 }
