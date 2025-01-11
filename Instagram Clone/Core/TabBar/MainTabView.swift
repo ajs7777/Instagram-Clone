@@ -29,14 +29,13 @@ struct MainTabView: View {
                 .tabItem {
                     Image(systemName: "heart")
                 }
-
             CurrentUserProfileView()
-                    .tabItem {
-                        Image(systemName: "person")
-                    }
+                .tabItem {
+                    Image(systemName: "person")
+                }
             
         } .tint(Color.black)
-           
+        
     }
 }
 

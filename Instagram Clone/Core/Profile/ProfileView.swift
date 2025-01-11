@@ -56,13 +56,13 @@ struct ProfileView: View {
             } label: {
                 Text("Edit Profile")
                     .foregroundStyle(.black)
-                    .fontWeight(.semibold)
-                    .font(.body)
+                    .fontWeight(.regular)
+                    .font(.callout)
                     .frame(maxWidth: .infinity)
                     .frame(height: 30)
                     .overlay {
                         RoundedRectangle(cornerRadius: 5)
-                            .stroke(Color.gray, lineWidth: 2)
+                            .stroke(Color.gray, lineWidth: 1)
                     }
                     .padding()
             }
