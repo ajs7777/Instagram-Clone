@@ -20,7 +20,7 @@ struct MainTabView: View {
                     Image(systemName: "magnifyingglass")
                 }
                 .toolbarBackground(.white, for: .tabBar)
-            Text("Upload Post")
+            UploadPostView()
                 .tabItem {
                     Image(systemName: "plus.square")
                         .environment(\.symbolVariants, .none)

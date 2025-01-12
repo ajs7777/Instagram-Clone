@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct UploadPostView: View {
     
     @State var caption = ""
+    @State var imagePickerIsPresented: Bool = false
+    @State var photoItem : PhotosPickerItem?
     
     var body: some View {
         VStack{
@@ -43,6 +46,10 @@ struct UploadPostView: View {
             } .padding()
             Spacer()
         }
+        .onAppear{
+            imagePickerIsPresented.toggle()
+        }
+        .photosPicker(isPresented: $imagePickerIsPresented, selection: $photoItem)
     }
 }
 
