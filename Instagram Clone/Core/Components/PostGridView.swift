@@ -29,7 +29,7 @@ struct PostGridView: View {
                     .resizable()
                     .scaledToFill()
                     .frame(width: imageScale, height: imageScale)
-                    .clipShape(Rectangle())
+                    .clipped()
             }
         }
     }
