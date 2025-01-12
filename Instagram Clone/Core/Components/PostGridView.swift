@@ -15,10 +15,7 @@ struct PostGridView: View {
         .init(.flexible(), spacing: 1)
     ]
     
-    let user : User
-    var posts : [Post] {
-        return Post.MOCK_POST.filter { $0.user?.username == user.username }
-    }
+    let posts : [Post]
     
     let imageScale : CGFloat = (UIScreen.main.bounds.width / 3 ) - 1
     
@@ -36,5 +33,5 @@ struct PostGridView: View {
 }
 
 #Preview {
-    PostGridView( user: User.MOCK_USER[0])
+    PostGridView(posts: Post.MOCK_POST)
 }
