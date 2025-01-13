@@ -36,7 +36,7 @@ struct UploadPostView: View {
             } .padding(.horizontal)
             
             HStack{
-                if let image = viewModel.profileIMage {
+                if let image = viewModel.postImage {
                     image
                         .resizable()
                         .scaledToFill()
