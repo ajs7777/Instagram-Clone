@@ -16,12 +16,10 @@ struct CompleteSignUpView: View {
         VStack(spacing: 10.0) {
             Spacer()
             VStack(spacing: 0) {
-                Text("Welcome to Instagram,")
+                Text("Welcome to Instagram, \(viewModel.username)")
                     .font(.title2)
                     .fontWeight(.bold)
-                Text("Bruce Wayne")
-                    .font(.title2)
-                    .fontWeight(.bold)
+               
             }
             Text("Click below to complte registration and start using Instagram")
                 .foregroundStyle(.gray)
