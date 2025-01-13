@@ -10,6 +10,7 @@ import SwiftUI
 struct CompleteSignUpView: View {
     
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var viewModel : RegistrationViewModel
     
     var body: some View {
         VStack(spacing: 10.0) {
@@ -28,9 +29,10 @@ struct CompleteSignUpView: View {
                 .multilineTextAlignment(.center)
             
             VStack(spacing: 25.0) {
-                
                 Button {
-                   print("Sign In Done")
+                    Task {
+                        try await viewModel.createUser()
+                    }
                 } label: {
                     Text("Complete Sign Up")
                         .font(.subheadline)

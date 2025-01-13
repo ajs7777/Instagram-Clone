@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CreateUsernameView: View {
     
-    @State var userName = ""
+    @EnvironmentObject var viewModel : RegistrationViewModel
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -23,7 +23,7 @@ struct CreateUsernameView: View {
                 .font(.footnote)
             
             VStack(spacing: 25.0) {
-                SecureField("Create a username", text: $userName)
+                TextField("Create a username", text: $viewModel.username)
                     .textInputAutocapitalization(.never)
                     .modifier(IGButtonStyleModifier())
                 

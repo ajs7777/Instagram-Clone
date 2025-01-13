@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddEmailView: View {
     
-    @State var email = ""
+    @EnvironmentObject var viewModel : RegistrationViewModel
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -22,7 +22,7 @@ struct AddEmailView: View {
                 .font(.footnote)
             
             VStack(spacing: 25.0) {
-                TextField("Enter you email", text: $email)
+                TextField("Enter you email", text: $viewModel.email)
                     .textInputAutocapitalization(.never)
                     .modifier(IGButtonStyleModifier())
                 

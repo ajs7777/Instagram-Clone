@@ -30,7 +30,7 @@ struct ProofileHeaderView: View {
             .padding(.bottom, 10)
         
         VStack(alignment: .leading, spacing: 4.0) {
-            if let fullName = user.fullName {
+            if let fullName = user.fullname {
                 Text(fullName)
                     .fontWeight(.bold)
                     .font(.subheadline)
