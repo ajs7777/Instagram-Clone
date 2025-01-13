@@ -18,7 +18,12 @@ class AuthService: ObservableObject {
     }
     
     func logIn(email: String, password: String) async throws {
-        
+        do {
+            let result = try await Auth.auth().signIn(withEmail: email, password: password)
+            self.userSession = result.user
+        } catch {
+            print("DEBUG: Error Log in user \(error.localizedDescription)")
+        }
     }
     
     func createUser(email: String, password: String, username: String) async throws {
@@ -36,6 +41,7 @@ class AuthService: ObservableObject {
     }
     
     func logout() {
-        
+        try? Auth.auth().signOut()
+        self.userSession = nil
     }
 }
