@@ -12,7 +12,7 @@ struct UploadPostView: View {
     
     @State var caption = ""
     @State var imagePickerIsPresented: Bool = false
-    @State var photoItem : PhotosPickerItem?
+    @StateObject var viewModel = UploadPostViewModel()
     
     var body: some View {
         VStack{
@@ -36,12 +36,13 @@ struct UploadPostView: View {
             } .padding(.horizontal)
             
             HStack{
-                Image("batman-2")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 100, height: 100)
-                    .clipped()
-                
+                if let image = viewModel.profileIMage {
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 100, height: 100)
+                        .clipped()
+                }
                 TextField("Enter your caption...", text: $caption, axis: .vertical)
             } .padding()
             Spacer()
@@ -49,7 +50,7 @@ struct UploadPostView: View {
         .onAppear{
             imagePickerIsPresented.toggle()
         }
-        .photosPicker(isPresented: $imagePickerIsPresented, selection: $photoItem)
+        .photosPicker(isPresented: $imagePickerIsPresented, selection: $viewModel.selsectedImage)
     }
 }
 
