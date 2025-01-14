@@ -38,6 +38,7 @@ struct EditProfileView: View {
                 
                 PhotosPicker(selection: $viewModel.selectedImage) {
                     VStack{
+                        VStack{
                         if let image = viewModel.profileImage {
                             image
                                 .resizable()
@@ -45,14 +46,19 @@ struct EditProfileView: View {
                                 .frame(width: 80, height: 80)
                                 .clipShape(Circle())
                         } else {
-                            Image(systemName: "person.circle")
+                            Image(systemName: "person.circle.fill")
                                 .resizable()
                                 .scaledToFill()
                                 .foregroundStyle(Color(.systemGray5))
                                 .frame(width: 80, height: 80)
                                 .clipShape(Circle())
+                            
                         }
-                        
+                        } .overlay(alignment: .bottomTrailing) {
+                            Image(systemName: "camera.fill")
+                                .foregroundStyle(.gray)
+                                .padding(3)
+                        }
                         Text("Edit Profile Picture")
                     } .padding(.vertical, 8)
                 }
