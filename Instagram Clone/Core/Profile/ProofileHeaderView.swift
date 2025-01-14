@@ -45,17 +45,23 @@ struct ProofileHeaderView: View {
         
         
         Button {
-            
+            if user.currentUser {
+                print("Edit profile")
+            } else {
+                print("Follow")
+            }
         } label: {
-            Text("Edit Profile")
-                .foregroundStyle(.black)
+            Text(user.currentUser ? "Edit Profile" : "Follow")
+                .foregroundStyle(user.currentUser ? .black : .white)
                 .fontWeight(.regular)
                 .font(.callout)
                 .frame(maxWidth: .infinity)
                 .frame(height: 30)
+                .background(user.currentUser ? Color.clear : Color.blue)
+                .clipShape(RoundedRectangle(cornerRadius: 6 ))
                 .overlay {
                     RoundedRectangle(cornerRadius: 5)
-                        .stroke(Color.gray, lineWidth: 1)
+                        .stroke(user.currentUser ? Color.gray : Color.white, lineWidth: 1)
                 }
                 .padding()
         }
