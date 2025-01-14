@@ -54,6 +54,7 @@ class AuthService: ObservableObject {
     func logout() {
         try? Auth.auth().signOut()
         self.userSession = nil
+        self.currentUser = nil
     }
     
     func uploadUserData(uid : String, username: String, email: String) async {
