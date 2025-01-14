@@ -24,9 +24,8 @@ struct CreateUsernameView: View {
             
             VStack(spacing: 25.0) {
                 TextField("Create a username", text: $viewModel.username)
-                    .textInputAutocapitalization(.never)
+                    .autocapitalization(.none)
                     .modifier(IGButtonStyleModifier())
-                
                 NavigationLink {
                     PasswordView()
                         .navigationBarBackButtonHidden(true)

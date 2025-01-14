@@ -39,6 +39,7 @@ struct ProofileHeaderView: View {
                 Text(bio)
                     .font(.footnote)
             }
+            Text(user.username)
         } .padding(.horizontal)
             .frame(maxWidth: .infinity, alignment: .leading)
         

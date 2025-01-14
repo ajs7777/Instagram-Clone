@@ -12,11 +12,12 @@ import FirebaseFirestore
 
 class AuthService: ObservableObject {
     
+    @Published var currentUser : User?
     @Published var userSession : FirebaseAuth.User?
     static let shared = AuthService()
     
     init() {
-        userSession = Auth.auth().currentUser
+        Task{ try await loadUserData() }
     }
     
     @MainActor
@@ -24,7 +25,7 @@ class AuthService: ObservableObject {
         do {
             let result = try await Auth.auth().signIn(withEmail: email, password: password)
             self.userSession = result.user
-            
+            try await loadUserData()
         } catch {
             print("DEBUG: Error Log in user \(error.localizedDescription)")
         }
@@ -42,8 +43,12 @@ class AuthService: ObservableObject {
  
     }
     
-    func loadUser() async throws {
-        
+    @MainActor
+    func loadUserData() async throws {
+        self.userSession = Auth.auth().currentUser
+        guard let currentUid = userSession?.uid else { return }
+        let snapshot = try await Firestore.firestore().collection("users").document(currentUid).getDocument()
+        self.currentUser = try? snapshot.data(as: User.self)
     }
     
     func logout() {
@@ -53,6 +58,7 @@ class AuthService: ObservableObject {
     
     func uploadUserData(uid : String, username: String, email: String) async {
         let user = User(id: uid, username: username, email: email)
+        currentUser = user
         guard let encodedData = try? Firestore.Encoder().encode(user) else { return }
         try? await Firestore.firestore().collection("users").document(user.id).setData(encodedData)
     }
