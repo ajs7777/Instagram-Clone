@@ -39,7 +39,7 @@ struct LoginView: View {
                 }
                 
                 Button {
-                    Task{ try await viewModel.logIn()}
+                    Task{ try await viewModel.signIn()}
                 } label: {
                     Text("Login")
                         .foregroundStyle(.white)
