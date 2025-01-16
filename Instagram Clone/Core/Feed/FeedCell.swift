@@ -15,13 +15,10 @@ struct FeedCell: View {
         VStack{
             //header
             HStack{
-                if let profileImage = post.user?.profileImageUrl {
-                    Image(profileImage)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 40, height: 40)
-                        .clipShape(Circle())
+                if let user = post.user {
+                    CircularProfileImageView(user: user, size: .xSmall)
                 }
+                
                 if let username = post.user?.username {
                     Text(username)
                         .font(.subheadline)
@@ -102,5 +99,5 @@ struct FeedCell: View {
 }
 
 #Preview {
-    FeedCell(post: Post.MOCK_POST[4])
+    FeedCell(post: Post.MOCK_POST[0])
 }
