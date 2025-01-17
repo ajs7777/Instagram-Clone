@@ -60,6 +60,7 @@ struct UploadPostView: View {
     func upoloadPostAndBackToFeed() {
         viewModel.postImage = nil
         viewModel.selsectedImage = nil
+        caption = ""
         tabIndex = 0
     }
 }
