@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 struct Post : Identifiable, Codable {
     let id : String
@@ -13,7 +14,7 @@ struct Post : Identifiable, Codable {
     var likes : Int
     let caption : String
     let imageurl : String
-    let timeStamp : Date
+    let timeStamp : Timestamp
     var user : User?
     
     static var MOCK_POST: [Post] = [
@@ -23,7 +24,7 @@ struct Post : Identifiable, Codable {
             likes: 215,
             caption: "This is some test captions for now",
             imageurl: "batman-2",
-            timeStamp: Date(),
+            timeStamp: Timestamp(),
             user: User.MOCK_USER[0]
         ),
         .init(
@@ -32,7 +33,7 @@ struct Post : Identifiable, Codable {
             likes: 654,
             caption: "This is some test captions for now",
             imageurl: "black-panther-2",
-            timeStamp: Date(),
+            timeStamp: Timestamp(),
             user: User.MOCK_USER[1]
         ),
         .init(
@@ -41,7 +42,7 @@ struct Post : Identifiable, Codable {
             likes: 3000,
             caption: "This is some test captions for now",
             imageurl: "ironman-2",
-            timeStamp: Date(),
+            timeStamp: Timestamp(),
             user: User.MOCK_USER[2]
         ),
         .init(
@@ -50,7 +51,7 @@ struct Post : Identifiable, Codable {
             likes: 223,
             caption: "This is some test captions for now",
             imageurl: "venom-2",
-            timeStamp: Date(),
+            timeStamp: Timestamp(),
             user: User.MOCK_USER[3]
         ),
         .init(
@@ -59,7 +60,7 @@ struct Post : Identifiable, Codable {
             likes: 415,
             caption: "This is some test captions for now",
             imageurl: "spiderman-2",
-            timeStamp: Date(),
+            timeStamp: Timestamp(),
             user: User.MOCK_USER[4]
         ),
     ]
