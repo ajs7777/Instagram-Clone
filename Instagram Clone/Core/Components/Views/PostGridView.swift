@@ -9,19 +9,23 @@ import SwiftUI
 
 struct PostGridView: View {
     
+    @StateObject var viewModel: PostGridViewModel
+    
+    init(user: User) {
+        self._viewModel = StateObject(wrappedValue: PostGridViewModel(user: user))
+    }
+    
     @State var gridItems: [GridItem] = [
         .init(.flexible(), spacing: 1),
         .init(.flexible(), spacing: 1),
         .init(.flexible(), spacing: 1)
     ]
-    
-    let posts : [Post]
-    
+
     let imageScale : CGFloat = (UIScreen.main.bounds.width / 3 ) - 1
     
     var body: some View {
         LazyVGrid(columns: gridItems, spacing: 1) {
-            ForEach(posts) { post in
+            ForEach(viewModel.posts) { post in
                 Image(post.imageurl)
                     .resizable()
                     .scaledToFill()
@@ -33,5 +37,5 @@ struct PostGridView: View {
 }
 
 #Preview {
-    PostGridView(posts: Post.MOCK_POST)
+    PostGridView(user: User.MOCK_USER[0])
 }
