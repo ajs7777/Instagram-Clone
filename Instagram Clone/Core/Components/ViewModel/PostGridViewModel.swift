@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 class PostGridViewModel: ObservableObject {
     private let user : User
     @Published var posts = [Post]()
